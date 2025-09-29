@@ -1,0 +1,2901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Refactoring Instruction in Computing Education</title>
+  <style>
+
+.footnote {
+  position: fixed;
+  bottom: 5px;
+  left: 10px;
+  font-size: 12px;
+  color: #555;
+  background-color: #fafafa;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      padding: 20px;
+      font-size: 13px;
+      background-color: #fff;
+      color: #333;
+    }
+    
+    h1 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #2c3e50;
+    }
+
+    .controls {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+       gap: 8px;
+    }
+
+    .controls label {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .scroll-container {
+      overflow-x: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1000px;
+    }
+
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 6px 10px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    th {
+      background-color: #f9fafb;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      box-shadow: inset 0 -1px 0 #ddd;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fcfcfc;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    tr:hover {
+      background-color: #f0f7ff;
+    }
+
+.sticky-col {
+  position: sticky;
+  background-color: #fdfdfd;
+  z-index: 1;
+  vertical-align: top;
+}
+
+.sticky-col:nth-child(1) { /* Title */
+  left: 0;
+  z-index: 5;
+  font-weight: 600;
+  background-color: #f8f9fa;
+  min-width: 500px;   
+  max-width: 700px;   
+  text-align: left;
+  padding-left: 10px;
+  white-space: normal;  
+}
+
+.sticky-col:nth-child(2) { /* Year */
+  left: 300px;   
+  z-index: 4;
+  background-color: #f8f9fa;
+  min-width: 60px;
+  text-align: center;
+}
+
+.sticky-col:nth-child(3) { /* Language */
+  left: 360px;  
+  z-index: 3;
+  background-color: #f8f9fa;
+  min-width: 60px;
+  text-align: center;
+}
+
+
+
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    select {
+      font-size: 13px;
+      padding: 4px 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Refactoring Instruction in Computing Education: A Systematic Literature Review</h1>
+  <h2></h2>
+
+  <div class="controls">
+    <label for="columnToggle">Select Column Group to Display:</label>
+    <select id="columnToggle" onchange="toggleColumns(this.value)">
+      <option value="method">Method of Delivery</option>
+      <option value="protocol">Experimental Protocols</option>
+      <option value="goals">Refactoring Goals</option>
+      <option value="focus">Refactoring Focus</option>
+    </select>
+  </div>
+
+  <div class="scroll-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="sticky-col">Title</th>
+          <th class="sticky-col">Year</th>
+          <th class="sticky-col">Language</th>
+          <!-- Method of Delivery -->
+          <th class="col-method">Assignment</th>
+          <th class="col-method">Project</th>
+          <th class="col-method">Practice</th>
+          <th class="col-method">Lab Session</th>
+          <th class="col-method">Demo / Tutorial</th>
+          <th class="col-method">Quiz</th>
+          <th class="col-method">Class Activity</th>
+          <th class="col-method">Peer Review</th>
+          <th class="col-method">Tool</th>
+          <th class="col-method">Discussion / Reflection</th>
+          <!-- Experimental Protocols -->
+          <th class="col-protocol">Quantitative</th>
+          <th class="col-protocol">Qualitative</th>
+          <th class="col-protocol">Mixed-Methods</th>
+          <th class="col-protocol">Survey</th>
+          <th class="col-protocol">Descriptive / Correlational</th>
+          <!-- Refactoring Goals -->
+          <th class="col-goals">Reducing Technical Debt</th>
+          <th class="col-goals">Improving Code Design</th>
+          <th class="col-goals">Promoting Best Practices</th>
+          <th class="col-goals">Enhancing Code Reusability</th>
+          <th class="col-goals">Developing Problem-Solving</th>
+          <th class="col-goals">Facilitating Maintenance</th>
+          <th class="col-goals">Boosting Efficiency</th>
+          <th class="col-goals">Encouraging Improvement</th>
+          <th class="col-goals">Supporting Collaboration</th>
+          <th class="col-goals">Improving Longevity</th>
+          <!-- Refactoring Focus -->
+          <th class="col-focus">Syntax Errors</th>
+          <th class="col-focus">Logical Errors</th>
+          <th class="col-focus">Code Smells</th>
+          <th class="col-focus">Performance Issues</th>
+          <th class="col-focus">Security Vulnerabilities</th>
+          <th class="col-focus">Code Cleanup</th>
+          <th class="col-focus">Design Improvements</th>
+          <th class="col-focus">Error Fixes</th>
+        </tr>
+      </thead>
+      <tbody>
+<!-- paper 1 -->
+<tr>
+  <td class="sticky-col"><a href="https://www.researchgate.net/profile/Thorsten-Haendler-2/publication/366407867_A_Card_Game_for_Learning_Software-Refactoring_Principles/links/63a0656e024dc52c8a3219e3/A-Card-Game-for-Learning-Software-Refactoring-Principles.pdf " target="_blank">A card game for learning software-refactoring principles</a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">generic-OO *</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 2 -->
+<tr>
+  <td class="sticky-col"><a href="https://www.scitepress.org/Papers/2019/83508/83508.pdf" target="_blank">A framework for the assessment and training of software refactoring competences </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 3 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6913383&casa_token=-DiK9qtoZ_oAAAAA:tBTytYMW6Ko3jvoOCQ6cwMpccz9A3uwyKsahTQFi1d3lGtsyUd4-QO3DpUE7R88pY9J3QA&tag=1 " target="_blank">A method for detecting bad smells and ITS application to software engineering education </a></td>
+  <td class="sticky-col">2014</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 4 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3502718.3524810?casa_token=YvlWva9vlY0AAAAA:NEiA4_ilDNRfm8yhxtdx2u7q1i3QScn-tWoWUQjRr1e-5vVXo7qOZKOUmG5OBnBgHXKewgxF " target="_blank">A Resource to Support Novices Refactoring Conditional Statements </a></td>
+  <td class="sticky-col">2022</td>
+  <td class="sticky-col">C</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 5 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3408877.3432526 " target="_blank">A Tutoring System to Learn Code Refactoring </a></td>
+  <td class="sticky-col">2021</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 6 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4599523 " target="_blank">An Agile classroom experience: Teaching TDD and refactoring </a></td>
+  <td class="sticky-col">2008</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 7 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9894454 " target="_blank">An Applicability Study on Refactoring Principles in Reading-Based Programming Learning </a></td>
+  <td class="sticky-col">2022</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 8 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/1121341.1121451?casa_token=Jl5ic2PNNowAAAAA:jVcahU8rbLLj70F-DIZR4KTCpJpAl3oqgh3qFHZs4w6-5EjtpTFgdDyhdGvJdG68WH08wTyM " target="_blank">An innovative approach to teaching refactoring</a></td>
+  <td class="sticky-col">2006</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 9 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/2999541.2999559?casa_token=s58YNYm-z1UAAAAA:pz2L8dpcP5PQp_dG640ArMamH2l4m6oW1SPaNVsgjansXkie17E2obwcPOLPocT0SPfHgiXF " target="_blank">Analyzing students' software redesign strategies </a></td>
+  <td class="sticky-col">2016</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 10 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/2691352.2691358?casa_token=kokV0y4XLqoAAAAA:utAAUdWJCVk3ZPehMZBzT_6ZXf6lNumdnekj0BD8IyHFm9r5GLQewd0ijeHWHijV5ngvsLMm " target="_blank">Beautiful JavaScript: How to guide students to create good and elegant code </a></td>
+  <td class="sticky-col">2014</td>
+  <td class="sticky-col">JavaScript</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 11 -->
+<tr>
+  <td class="sticky-col"><a href="https://riunet.upv.es/server/api/core/bitstreams/2e276a56-ab17-4490-b329-0ed3aa269b38/content " target="_blank">Challenges of knowledge component modeling: A software engineering case study </a></td>
+  <td class="sticky-col">2022</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 12 -->
+<tr>
+  <td class="sticky-col"><a href="https://pdfs.semanticscholar.org/2653/75aec0c0a24615232d6b5dec61ec1f8dc444.pdf " target="_blank">Clean Code Tutoring: Makings of a Foundation </a></td>
+  <td class="sticky-col">2022</td>
+  <td class="sticky-col">C\#</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 13 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3350768.3352490?casa_token=_oDf9eQa-wMAAAAA:c80qdtn3ong9CIBIY2c9ej3lvFA32fbS2FCJS7T7zICDnyhr2EHd_ri5a7K9EmxC6TyHRMEi " target="_blank">Cleangame: Gamifying the identification of code smells </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 14 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7365795&casa_token=m8ziBuub9kQAAAAA:oVxztSjWYDkEZmhQpN5BAtsNCoV_lZ3hrASezI-ixgfiGGHwptWZOvpd2iKwx4cTRSWlrw " target="_blank">Code Comprehension Activities in Undergraduate Software Engineering Course - A Case Study </a></td>
+  <td class="sticky-col">2015</td>
+  <td class="sticky-col">mutiple</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 15 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8818950&casa_token=1JcJg16owO0AAAAA:J4Mgg93z30UXwGkNXTyiTdxkoFa3YHsImzKJFGyxnQ9JkthDmApZT_B3452vwEaQY58PlA " target="_blank">Code Quality Improvement for All: Automated Refactoring for Scratch </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">Scratch</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 16 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5982370&casa_token=XSV4DZ9hR0wAAAAA:zoGhbeFUNuNf_UfDPYBSV8YNDUlyGVMrWtK5Txr675bb-2z06T9iFWcEFwndiyjI29jGKw " target="_blank">Dependency Analysis for Learning Class Structure for Novice Java Programmer </a></td>
+  <td class="sticky-col">2011</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 17 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7017701&casa_token=D3u4myOFxFkAAAAA:rHKIZVCUNbGOwmd57MKVXuRr9IItmoYgsZLnkXI4b5aLmvR_ER8c9tw91BWaJdemTNv82w " target="_blank">Design of e-activities for the learning of code refactoring tasks </a></td>
+  <td class="sticky-col">2014</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 18 -->
+<tr>
+  <td class="sticky-col"><a href="https://link.springer.com/chapter/10.1007/978-3-540-24767-8_82 " target="_blank">Design patterns in scientific software </a></td>
+  <td class="sticky-col">2004</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 19 -->
+<tr>
+  <td class="sticky-col"><a href="https://link.springer.com/chapter/10.1007/978-3-030-21151-6_24 " target="_blank">Detecting and Addressing Design Smells in Novice Processing Programs </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">Processing</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 20 -->
+<tr>
+  <td class="sticky-col"><a href="https://cit.iict.bas.bg/CIT_2011/v11-2/46-64.pdf " target="_blank">Development of a refactoring learning environment</a></td>
+  <td class="sticky-col">2011</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 21 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3279720.3279736?casa_token=amKIkjm56zkAAAAA:zdOXm6cI8Jd0UQowB0GFIVBm313-R0b1a13CQTwKbrBfp9E15d3J4vNfQtzfbU_MbVM-ruMj " target="_blank">Earthworm - Automated decomposition suggestions </a></td>
+  <td class="sticky-col">2018</td>
+  <td class="sticky-col">Python</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 22 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8941193&casa_token=ePS7uaPb0MoAAAAA:13h4mjuwTDbCD5Kv6o7WgVJZ4J4w3-AEBoB3XWPk904iGce_IZweNIDOI92PsmWJWZEdMw&tag=1 " target="_blank">Enhancing Abstraction in App Inventor with Generic Event Handlers </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">APPInventor</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 23 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/1352135.1352252?casa_token=x3EkodBgqNoAAAAA:waghyZ7xJwKaed4-lT9LaCIAXjFrofNst7JVJ20XGL179ZuYzzljW6aYSDXzpndKlRkAJYyW " target="_blank">Evolving an integrated curriculum for object-oriented analysis and design </a></td>
+  <td class="sticky-col">2008</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 24 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7814531&casa_token=9weDuC--3vwAAAAA:e1sHLFksTTufUwJ4FM0rzbP_jd9REYn6JrOsZrAQJhegrXK582RoXvdjP2Ss0XpEg4hAlA " target="_blank">How to improve code quality by measurement and refactoring </a></td>
+  <td class="sticky-col">2016</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 25 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3478431.3499294?casa_token=ZwhhXsjLHbcAAAAA:S7Cm217ZJKqpQvd6pRSyHwBbr2INCVCiBraQiqGxF4SkOC2_Hue9rSNTuAUJt4hq6mALc5C3 " target="_blank">Hyperstyle: A Tool for Assessing the Code Quality of Solutions to Programming Assignments </a></td>
+  <td class="sticky-col">2022</td>
+  <td class="sticky-col">mutiple</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 26 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9610643&casa_token=AsqPfE2jBKIAAAAA:uqAUebpSRBQ_mIE-U5w6K4Ed_S8fMGHQtxtDFoaqX7ZG5jGuAeYd9DD_JRCvHuN6rhay5A " target="_blank">Improving Readability of Scratch Programs with Search-based Refactoring </a></td>
+  <td class="sticky-col">2021</td>
+  <td class="sticky-col">Scratch</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 27 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8124337&casa_token=CLURkf7mhCQAAAAA:gu9-eKZbCKuLDzrCFxgBPx2YctZFL2ZRwacind6oDD-IfRjIQfXjhnSBsGruL3YMvHW4nw " target="_blank">Improving the software quality - An educational approach </a></td>
+  <td class="sticky-col">2017</td>
+  <td class="sticky-col">C\#</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 28 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/abs/10.5555/1516595.1516633 " target="_blank">Integrating Antipatterns into the Computer Science Curriculum</a></td>
+  <td class="sticky-col">2009</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 29 -->
+<tr>
+  <td class="sticky-col"><a href="https://onlinelibrary.wiley.com/doi/pdf/10.1002/cae.21793?casa_token=V-UvA7KQYtAAAAAA%3AhCjSxnZUemh2xyxZyBDQr2eGskhJQeas_3EAogUnzS_RZdjG6Me4Z9z26WingtTrnUldVy8cyd8 " target="_blank">Investigating code quality tools in the context of software engineering education </a></td>
+  <td class="sticky-col">2017</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 30 -->
+<tr>
+  <td class="sticky-col"><a href="https://d1wqtxts1xzle7.cloudfront.net/71722507/Learning_appreciation_for_design_pattern20211007-4358-ij8zld.pdf?1738434686=&response-content-disposition=inline%3B+filename%3DLearning_Appreciation_for_Design_Pattern.pdf&Expires=1751329899&Signature=EOpUmhT9Sto2pLW3HpYG8vA1XYdGG8ethTQ4-ZurK3LfI-2SYaQUhU~Kvr~848el0TO2hJZnLIl2-5f76kp8iRwDsIaKhExuHXCfA6qsAKEtsBq~ZGUqSzAvLfBQZocmRhjPJftr7uNo4368Icz-ztu9dImBzZbv3EBGNKWMqzn54N11DdQsLgDGL-5YqYSPuxZf8lJDugF-eIkYY5imHN~sPmBcgktkSVGW8IweIBGEF9Z7RAiuJWeRGmulu6dGCdA6Ch~uFJLtq18Ot98o3XxMr3dRyQzcf0OA6xy~QBBA5v7M74oRDOQhJhk6p010hj90WEP6wfEC3doYaYSgwg__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA " target="_blank">Learning appreciation for design patterns by doing it the hard way first </a></td>
+  <td class="sticky-col">2003</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 31 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4720643&casa_token=dG63tYgBuzYAAAAA:vKAQhCR52os_jvQH_wW9lQ9BB7rE0Vdtjkztm2oT_M1AhBC_Pbvc8qGcOYB94w_3DUF1UA " target="_blank">Learning software engineering principles using open source software </a></td>
+  <td class="sticky-col">2008</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 32 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3359591.3359738?casa_token=Qu3PBZBkWXAAAAAA:FDmRX0U_7LoCkjD1QL_swfE82lJGgUlI1rMahzxUVoYYjqEmOfjbZXMUgT5GSdRjgnzoy1NN " target="_blank">Learning to listen for design </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 33 -->
+<tr>
+  <td class="sticky-col"><a href="https://link.springer.com/chapter/10.1007/978-3-030-58459-7_12 " target="_blank">RefacTutor: An Interactive Tutoring System for Software Refactoring </a></td>
+  <td class="sticky-col">2020</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 34 -->
+<tr>
+  <td class="sticky-col"><a href="https://www.proceedings.bas.bg/cgi-bin/mitko/0DOC_abs.pl?2011_7_14 " target="_blank">ReLE - a refactoring supporting tool</a></td>
+  <td class="sticky-col">2011</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 35 -->
+<tr>
+  <td class="sticky-col"><a href="https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/7e995efa-3cf3-41b3-9696-fdfc3c40a818/content " target="_blank">Serious refactoring games </a></td>
+  <td class="sticky-col">2019</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 36 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3428029.3428043?casa_token=Q1Fo7ACoziEAAAAA:lusAUsNwbc7vLK3zvLjh-xrIKeuBc-OKL4hFv8S10jAL-Oo97X3tmlbF-rVeatbiZ75yX8Mt " target="_blank">Student Refactoring Behaviour in a Programming Tutor </a></td>
+  <td class="sticky-col">2020</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 37 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/1595496.1562960?casa_token=sdHUNgdMb8YAAAAA:Plf66sMO7TW0PPuddYsoiWoKH_-qSpDh-u5WIz1OuGnEyoa5CyqFJr5I9hVuj81ktD0NTie6 " target="_blank">Teaching design patterns using a family of games </a></td>
+  <td class="sticky-col">2009</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 38 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/1227504.1227364?casa_token=-qZzPubw4XQAAAAA:XJ6Pyb_-PxAUlKHjrJgQ9kVp48OOgAAntPlbA4ydT0E2LyunotvdrQrEZ1HDkDSV_oF4LSnS " target="_blank">Teaching students to build well formed object-oriented methods through refactoring </a></td>
+  <td class="sticky-col">2007</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 39 -->
+<tr>
+  <td class="sticky-col"><a href="https://par.nsf.gov/servlets/purl/10179987" target="_blank">Teaching the culture of quality from the ground up: Novice-tailored quality improvement for scratch programmers</a></td>
+  <td class="sticky-col">2020</td>
+  <td class="sticky-col">Scratch</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 40 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1572316&casa_token=nj6TmOVoJa8AAAAA:XvoQCZF5fJC4plxrD4hirJR0_ieKo9yTnplYAEFuvXDrwb3CB_ELudrHIhatUUbIx4a7uw " target="_blank">The LAN-simulation: A refactoring teaching example </a></td>
+  <td class="sticky-col">2005</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 41 -->
+<tr>
+  <td class="sticky-col"><a href="https://sol.sbc.org.br/index.php/cibse/article/view/20982 " target="_blank">Understanding Refactoring Tasks over Time: A Study Using Refactoring Graphs </a></td>
+  <td class="sticky-col">2022</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 42 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3159450.3159469?casa_token=vDuXUBj7Ie0AAAAA:BtcYKWEotW2LG53hhkX0HEjJWYUvmbqzt9D-eZHBx5HHKHo7o5-PBfCdZan8L4qVHGDV5MpG " target="_blank">Unencapsulated collection - A teachable design smell </a></td>
+  <td class="sticky-col">2018</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 43 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9569541&casa_token=oFdvqSSnqW4AAAAA:idm6SOwk4NToob8Fr77cnzOXUITZbk0443AfqqQQXdawVE7kFKBuxL3qInJvQmS59fgytg " target="_blank">Using examples as guideposts for programming exercises: Providing support while preserving the challenge </a></td>
+  <td class="sticky-col">2021</td>
+  <td class="sticky-col">C++</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 44 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3452383.3452399?casa_token=jwDruMuCoV8AAAAA:2L02NhRhdlm8QMjXOYLPcOBoTl0D8cmXA-aNVfbRxIf7HMAPm-GaPNlXApJcQ0cYg5VLRfKG " target="_blank">Using project-based approach to teach design patterns: An Experience Report </a></td>
+  <td class="sticky-col">2021</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 45 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3626252.3630856 " target="_blank">Fixing Your Own Smells: Adding a Mistake-Based Familiarisation Step When Teaching Code Refactoring</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Python</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 46 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3649217.3653560 " target="_blank">Code Refactoring Strategies of Third Year Software Engineering Students</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">C++</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 47 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3626253.3635626?casa_token=WP-P15o3xO4AAAAA:7OtRN3GiS9gffa-JCqooem-KzkyKAQZmIu34dHmGs-juXYiZlZ9vQjqOervqHQzmAaTbaR2V " target="_blank">Towards Reuse of Resources and Replication of Results to Improve Instruction on Refactoring Conditionals for Novice Programmers</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">C++</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 48 -->
+<tr>
+  <td class="sticky-col"><a href="https://arxiv.org/pdf/2410.20875 " target="_blank">Investigating Student Reasoning in Method-Level Code Refactoring: A Think-Aloud Study</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 49 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3635720?casa_token=2JtwzQcEosEAAAAA:9XXFSgPSFmHg0j3XyrJf2N6zolo4gu-2Y69IlkdmnBvkc_oRY71bzRdDQqVgBeBWxBM23b1h " target="_blank">What Learning Strategies are Used by Programming Students?</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Python</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 50 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10591974 " target="_blank">Uncovering Determinants of Code Quality in Education via Static Code Analysis</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 51 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10578672&casa_token=sH03al06A18AAAAA:bVOaud7ki80ogeEgCpgLKRLz4fhYdB3Q6tcKgEhijMSx7IXvbsdfBJtUnLb823_iXAak7g " target="_blank">Towards Comprehensive Assessment of Code Quality at CS1-level: Tools, Rubrics and Refactoring Rules</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Python</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 52 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3678869.3685687 " target="_blank">Test Smells Learning by a Gamification Approach</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 53 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3701625.3701681?casa_token=wsPsSA6yD1IAAAAA:Mps-DCxD09d47u9K0Oe4_iGu9C1LouopL9TuVZu2wVEuFDWtYBcEON9pl4ThGn5gQuT_Gsjv" target="_blank">Teaching Refactoring to Improve Code Quality with ChatGPT: An Experience Report in Undergraduate Lessons</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 54 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10663055&casa_token=wMDYcagUOwsAAAAA:RstH8J6j2i1_ghzLXmqWVjZWrSSwzQSEDh9KyWlC_Zjw5JwKQlead74uJ9w7jTTJBvDOfw&tag=1 " target="_blank">Leveraging Open Source LLMs for Software Engineering Education and Training</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 55 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3649165.3690119 " target="_blank">Auglets: Intelligent Tutors for Learning Good Coding Practices by Solving Refactoring Problems</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java, C++, and C#</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 56 -->
+<tr>
+  <td class="sticky-col"><a href="https://link.springer.com/chapter/10.1007/978-3-031-65522-7_21 " target="_blank">Code Smells for Assessing and Improving Students' Coding Skills and Practices</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 57 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3649217.3653638 " target="_blank">Catalog of Code Quality Defects in Introductory Programming</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 58 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3597503.3639227 " target="_blank">Barriers for Students During Code Change Comprehension</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 59 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3661167.3661290 " target="_blank">Automatic Assessment of Architectural Anti-patterns and Code Smells in Student Software Projects</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 60 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3691620.3695508?casa_token=W0ym5EYZJGMAAAAA:WcgEINf5IsyapONFbJlGdN1DBXJGbL_6z-cqwXMnHtrr9yJ1WHvpHGxv6kzCnq_OHhOBNMqg " target="_blank">iSMELL: Assembling LLMs with Expert Toolsets for Code Smell Detection and Refactoring</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 61 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3649217.3653546 " target="_blank">Asking Students to Refactor their Code: A Simple and Valuable Exercise</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">C++</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 62 -->
+<tr>
+  <td class="sticky-col"><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10662995&casa_token=8z6kxBHpaz0AAAAA:BsSMfXh8czbpuJmz1zXLNXnVboel5OaVQkHfHrWHYhoUpE1c53yh_y8iIri01NxrK6Tb5g&tag=1 " target="_blank">Acknowledging Good Java Code with Code Perfumes</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 63 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3587102.3588840?casa_token=0MfeeTxdpHYAAAAA:yc1E1gSYc44BbaZXlbeQApi0yLtK5C9rscKxrMIR7i_WzPa6LVnonfFS_XylrEWTvPHmCmox " target="_blank">Student Code Refactoring Misconceptions</a></td>
+  <td class="sticky-col">2023</td>
+  <td class="sticky-col">Java and Python</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 64 -->
+<tr>
+  <td class="sticky-col"><a href="https://link.springer.com/article/10.1007/s11412-023-09392-2 " target="_blank">Contesting sociocomputational norms: Computer programming instructors and students’ stancetaking around refactoring</a></td>
+  <td class="sticky-col">2023</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+
+<!-- paper 65 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3689187.3709615 " target="_blank">Introducing Code Quality at CS1 Level: Examples and Activities</a></td>
+  <td class="sticky-col">2024</td>
+  <td class="sticky-col">generic-OO</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>
+
+<!-- paper 66 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3716640.3716648 " target="_blank">On the Need to Clean Student's Duplicated and Verbose Code: The Arrows Problem</a></td>
+  <td class="sticky-col">2025</td>
+  <td class="sticky-col">C++</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+</tr>
+     
+<!-- paper 67 -->
+<tr>
+  <td class="sticky-col"><a href="https://dl.acm.org/doi/pdf/10.1145/3716640.3716648 " target="_blank">On the Need to Clean Student's Duplicated and Verbose Code: The Arrows Problem</a></td>
+  <td class="sticky-col">2025</td>
+  <td class="sticky-col">Java</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method"></td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-method">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol">1</td>
+  <td class="col-protocol"></td>
+  <td class="col-protocol"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-goals">1</td>
+  <td class="col-goals">1</td>
+  <td class="col-goals"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+  <td class="col-focus"></td>
+  <td class="col-focus">1</td>
+  <td class="col-focus">1</td>
+</tr>   
+      </tbody>
+    </table>
+  </div>
+<!-- Footnote -->
+  <div class="footnote">
+    * <strong>generic-OO</strong> = Generic Object-Oriented programming (not tied to a specific OO language, applies to general OO principles).
+  </div>
+  <script>
+    function toggleColumns(group) {
+      const groups = ['method', 'protocol', 'goals', 'focus'];
+      groups.forEach(g => {
+        const display = (g === group) ? '' : 'none';
+        document.querySelectorAll('.col-' + g).forEach(el => {
+          el.style.display = display;
+        });
+      });
+    }
+
+    toggleColumns('method');
+  </script>
+</body>
+</html>
